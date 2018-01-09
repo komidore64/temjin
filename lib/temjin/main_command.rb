@@ -1,6 +1,11 @@
 module Temjin
-  class MainCommand < Clamp::Command; end
+  class MainCommand < Clamp::Command
+    option ['-v', '--version'], :flag, 'display version' do
+      puts Temjin.version
+      exit
+    end
+  end
 
-  MainCommand.subcommand("list", "Actions related to lists", ListCommand)
-  MainCommand.subcommand("card", "Actions related to cards", CardCommand)
+  MainCommand.subcommand("list", "trello lists", ListCommand)
+  MainCommand.subcommand("card", "trello cards", CardCommand)
 end
