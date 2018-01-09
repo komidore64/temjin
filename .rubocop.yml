@@ -1,0 +1,91 @@
+AllCops:
+  Exclude:
+    - test/**/*
+  TargetRubyVersion: 2.0
+
+Style/HashSyntax:
+  Enabled: false # don't force 1.9 hash syntax
+
+Style/SpaceInsideHashLiteralBraces:
+  Enabled: true # allow spaces (eg { :a => 1 })
+  EnforcedStyle: no_space
+
+Style/LeadingCommentSpace:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/RescueModifier:
+  Enabled: false
+
+Style/WhileUntilModifier:
+  Enabled: false
+
+Style/AlignParameters:
+  Enabled: false # don't care if parameters are not aligned
+
+Style/AlignHash:
+  EnforcedLastArgumentHashStyle: ignore_implicit # ignore argument hashes
+
+Style/ParenthesesAroundCondition:
+  Enabled: false
+
+Style/DotPosition:
+  Enabled: false
+
+Style/Lambda:
+  Enabled: false # don't require -> for single line lambdas
+
+Style/RedundantSelf:
+  Enabled: false
+
+Style/RedundantReturn:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false # don't require documentation
+
+Style/Encoding:
+  Enabled: false # don't require utf-8 encoding on every file
+
+Style/MethodCalledOnDoEndBlock:
+  Enabled: true
+
+Style/SingleLineBlockParams:
+  Enabled: false
+
+Style/Next:
+  Enabled: false # don't enforce next in loops over if/unless
+
+Style/FormatString:
+  Enabled: false # we use % for i18n
+
+Style/GuardClause:
+  Enabled: false # don't enforce this
+
+Style/StringLiterals:
+  Enabled: false # dont't enforce
+
+Style/WordArray:
+  Enabled: false # don't force usage of %w()
+
+Style/FileName:
+  Exclude: ['script/**', 'db/seeds.d/**'] # scripts are hyphened case
+
+Rails/ScopeArgs:
+  Enabled: false # don't force usage of lambdas for scopes
+
+Style/EachWithObject:
+  Enabled: false # people can use inject
+
+Style/SymbolProc:
+  Enabled: false # don't force usage of symbol procs
+
+Style/SignalException:
+  EnforcedStyle: semantic
+
+# Don't enforce frozen string literals
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
