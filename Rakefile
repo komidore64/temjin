@@ -1,3 +1,4 @@
+require 'rake/clean'
 require 'rake/testtask'
 require 'rubocop/rake_task'
 
@@ -19,3 +20,5 @@ task 'rubocop:jenkins' do
 end
 
 task :default => [:test, :rubocop]
+
+CLEAN.include('coverage')
