@@ -6,6 +6,7 @@ module Temjin
     end
   end
 
+  MainCommand.subcommand("config", "temjin configuration", ConfigCommand)
   MainCommand.subcommand("list", "trello lists", ListCommand)
   MainCommand.subcommand("card", "trello cards", CardCommand)
 end
