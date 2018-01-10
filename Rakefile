@@ -19,6 +19,6 @@ task 'rubocop:jenkins' do
           --out rubocop.xml")
 end
 
-task :default => [:test, :rubocop]
+task :default => %i[test rubocop]
 
 CLEAN.include('coverage')

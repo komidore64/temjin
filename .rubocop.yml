@@ -1,16 +1,16 @@
 AllCops:
   Exclude:
     - test/**/*
-  TargetRubyVersion: 2.0
+  TargetRubyVersion: 2.4
 
 Style/HashSyntax:
   Enabled: false # don't force 1.9 hash syntax
 
-Style/SpaceInsideHashLiteralBraces:
+Layout/SpaceInsideHashLiteralBraces:
   Enabled: true # allow spaces (eg { :a => 1 })
   EnforcedStyle: no_space
 
-Style/LeadingCommentSpace:
+Layout/LeadingCommentSpace:
   Enabled: false
 
 Style/IfUnlessModifier:
@@ -22,16 +22,16 @@ Style/RescueModifier:
 Style/WhileUntilModifier:
   Enabled: false
 
-Style/AlignParameters:
+Layout/AlignParameters:
   Enabled: false # don't care if parameters are not aligned
 
-Style/AlignHash:
+Layout/AlignHash:
   EnforcedLastArgumentHashStyle: ignore_implicit # ignore argument hashes
 
 Style/ParenthesesAroundCondition:
   Enabled: false
 
-Style/DotPosition:
+Layout/DotPosition:
   Enabled: false
 
 Style/Lambda:
@@ -70,7 +70,7 @@ Style/StringLiterals:
 Style/WordArray:
   Enabled: false # don't force usage of %w()
 
-Style/FileName:
+Naming/FileName:
   Exclude: ['script/**', 'db/seeds.d/**'] # scripts are hyphened case
 
 Rails/ScopeArgs:

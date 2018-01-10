@@ -1,19 +1,22 @@
 module Temjin
   class ConfigCommand < Clamp::Command
+    def self.config_file_path
+      @config_file_path ||= File.join(ENV['HOME'], '.config', 'temjin.yml')
+    end
 
     subcommand "show-all", "display current configuration" do
       def execute
-        config = YAML.load_file(File.join(ENV['HOME'], '.config', 'temjin.yml'))
-        puts "app_key: #{config['app_key']}"
-        puts "user_token: #{config['user_token']}"
+        config = YAML.load_file(ConfigCommand.config_file_path)
+        puts "key: #{config['key']}"
+        puts "token: #{config['token']}"
       rescue Errno::ENOENT => _
-        puts "configuration file has not been created yet. please run `temjin config init`"
+        puts "Configuration file not found. Please run `temjin config init`."
       end
     end
 
     subcommand "init", "setup configuration" do
       def prompt(message, default = nil)
-        print("%s " % message)
+        print(message)
         result = STDIN.gets.chomp
         result.empty? ? default : result
       end
@@ -21,17 +24,16 @@ module Temjin
       def execute
         config = {}
 
-        puts "Navigate to https://trello.com/app-key to get your app key and user token."
+        puts "Go to https://trello.com/app-key to get your key and token."
         puts
 
-        config['app_key'] = prompt("app key:")
-        config['user_token'] = prompt("user token:")
+        config['key'] = prompt("key: ")
+        config['token'] = prompt("token: ")
 
-        File.open(File.join(ENV['HOME'], '.config', 'temjin.yml'), "w") do |file|
-          file.write config.to_yaml
+        File.open(ConfigCommand.config_file_path, "w") do |f|
+          f.write config.to_yaml
         end
       end
     end
-
   end
 end
