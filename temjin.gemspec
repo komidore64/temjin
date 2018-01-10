@@ -21,6 +21,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'clamp'
   gem.add_dependency 'ruby-trello'
+  gem.add_dependency 'formatador'
 
   gem.add_development_dependency 'minitest'
   gem.add_development_dependency 'rake'
