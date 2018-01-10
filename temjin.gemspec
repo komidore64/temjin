@@ -17,7 +17,7 @@ Gem::Specification.new do |gem|
   gem.files                 = Dir['lib/**/*.rb']
   gem.test_files            = Dir['test/**/*']
   gem.require_paths         = ['lib']
-  gem.executables           = ['temjin']
+  gem.executables << 'temjin'
 
   gem.add_dependency 'clamp'
   gem.add_dependency 'ruby-trello'
