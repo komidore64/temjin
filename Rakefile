@@ -1,5 +1,6 @@
 require 'rake/clean'
 require 'rake/testtask'
+require 'rake/notes/rake_task'
 require 'rubocop/rake_task'
 
 Rake::TestTask.new do |t|
@@ -21,4 +22,4 @@ end
 
 task :default => %i[test rubocop]
 
-CLEAN.include('coverage')
+CLEAN << 'coverage'

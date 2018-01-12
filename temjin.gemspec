@@ -25,6 +25,7 @@ Gem::Specification.new do |gem|
 
   gem.add_development_dependency 'minitest'
   gem.add_development_dependency 'rake'
+  gem.add_development_dependency 'rake-notes'
   gem.add_development_dependency 'rubocop', '~> 0.52.1'
   gem.add_development_dependency 'rubocop-checkstyle_formatter'
   gem.add_development_dependency 'simplecov'

@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '>= 2.4'
+
 gemspec
 
 ['Gemfile.local.rb', 'Gemfile.local'].map do |gf|
