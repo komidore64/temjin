@@ -2,7 +2,7 @@ module Temjin
   class CardCommand
     class ListCommand < Clamp::Command
       # TODO: eventually make BOARD and LIST optional, but for now we need them
-      parameter 'BOARD', 'trello board (option if default_board is set)'
+      parameter 'BOARD', 'trello board'
       parameter 'LIST', 'trello list'
 
       def execute
