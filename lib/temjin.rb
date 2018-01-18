@@ -19,8 +19,6 @@ module Temjin
   ConfigCommand.subcommand("init", "setup configuration", ConfigCommand::InitCommand)
   MainCommand.subcommand("config", "temjin configuration", ConfigCommand)
 
-  MainCommand.subcommand("list", "trello lists", ListCommand)
-
   CardCommand.subcommand("list", "list cards using optional filters", CardCommand::ListCommand)
   CardCommand.subcommand("show", "display a card's information", CardCommand::ShowCommand)
   CardCommand.subcommand("add", "add a new card", CardCommand::AddCommand)
