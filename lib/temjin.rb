@@ -9,6 +9,7 @@ require 'temjin/card_command'
 require 'temjin/card_command/list_command'
 require 'temjin/card_command/show_command'
 require 'temjin/card_command/add_command'
+require 'temjin/card_command/update_command'
 require 'temjin/list_command'
 require 'temjin/main_command'
 
@@ -23,5 +24,6 @@ module Temjin
   CardCommand.subcommand("list", "list cards using optional filters", CardCommand::ListCommand)
   CardCommand.subcommand("show", "display a card's information", CardCommand::ShowCommand)
   CardCommand.subcommand("add", "add a new card", CardCommand::AddCommand)
+  CardCommand.subcommand("update", "update a card", CardCommand::UpdateCommand)
   MainCommand.subcommand("card", "trello cards", CardCommand)
 end
