@@ -4,6 +4,8 @@ SimpleCov.start do
 end
 
 require 'webmock/minitest'
+WebMock.disable_net_connect!
+
 require 'minitest/autorun'
 
 require 'temjin'
