@@ -24,6 +24,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'formatador'
 
   gem.add_development_dependency 'minitest'
+  gem.add_development_dependency 'webmock'
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'rake-notes'
   gem.add_development_dependency 'rubocop', '~> 0.52.1'

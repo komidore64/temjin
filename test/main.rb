@@ -3,6 +3,7 @@ SimpleCov.start do
   add_filter '/test/'
 end
 
+require 'webmock/minitest'
 require 'minitest/autorun'
 
 require 'temjin'
