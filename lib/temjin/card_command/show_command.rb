@@ -4,10 +4,10 @@ module Temjin
       parameter 'CARD_ID', 'card ID'
 
       def execute
-        # FIXME: this should probably be moved to a Config class)
+        # FIXME: this should be moved to a Config class)
         temjin_config = YAML.load_file(ConfigCommand.config_file_path)
 
-        # FIXME: this should probably take place as part of a command's setup
+        # FIXME: this should take place as part of a command's setup
         Trello.configure do |config|
           config.developer_public_key = temjin_config['key']
           config.member_token = temjin_config['token']

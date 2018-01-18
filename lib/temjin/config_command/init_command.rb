@@ -10,6 +10,7 @@ module Temjin
       def execute
         config = {}
 
+        # TODO: use Formatador for all output
         puts 'Go to https://trello.com/app-key to get your key and token.'
         puts
 
