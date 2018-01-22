@@ -3,7 +3,7 @@ module Temjin
     class InitCommand < Clamp::Command
       def prompt(message, default = nil)
         print(message)
-        result = STDIN.gets.chomp
+        result = $stdin.gets.chomp
         result.empty? ? default : result
       end
 
@@ -19,7 +19,7 @@ module Temjin
         config['token'] = prompt('token: ')
 
         File.open(ConfigCommand.config_file_path, 'w') do |f|
-          f.write config.to_yaml
+          f.write(config.to_yaml)
         end
       end
     end
