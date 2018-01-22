@@ -19,7 +19,7 @@ Gem::Specification.new do |gem|
   gem.require_paths         = ['lib']
   gem.executables << 'temjin'
 
-  gem.add_dependency 'clamp'
+  gem.add_dependency 'clamp', '1.2.0.beta1'
   gem.add_dependency 'ruby-trello'
   gem.add_dependency 'formatador'
 

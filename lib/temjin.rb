@@ -2,6 +2,9 @@ require 'formatador'
 require 'clamp'
 require 'trello' # ruby-trello
 
+# beta feature
+Clamp.allow_options_after_parameters = true
+
 require 'temjin/config_command'
 require 'temjin/config_command/show_command'
 require 'temjin/config_command/init_command'
