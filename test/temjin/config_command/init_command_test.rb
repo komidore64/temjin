@@ -7,7 +7,7 @@ module Temjin
         def setup
           @tempfile = Tempfile.new('config.yml')
           @test_config_path = @tempfile.path
-          @init_command = Temjin::ConfigCommand::InitCommand.new('')
+          @init_command = Temjin::ConfigCommand::InitCommand.new('temjin config init')
         end
 
         def teardown
@@ -16,24 +16,25 @@ module Temjin
           @tempfile.close!
         end
 
-        def test_execute
+        def test_run
           Temjin::ConfigCommand.instance_variable_set(:@config_file_path, @test_config_path)
+          command_args = []
 
-          expected_config_file_contents = {
+          expected = {
             'username' => 'solid_snake',
             'key' => '0123456789abcdef0123456789abcdef',
             'token' => '0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef'
           }
 
           capture_output do |stdin|
-            stdin.puts('solid_snake')
-            stdin.puts('0123456789abcdef0123456789abcdef')
-            stdin.puts('0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef')
+            stdin.puts(expected['username'])
+            stdin.puts(expected['key'])
+            stdin.puts(expected['token'])
             stdin.rewind
-            @init_command.execute
+            @init_command.run(command_args)
           end
 
-          assert_equal(expected_config_file_contents, YAML.load_file(@test_config_path))
+          assert_equal(expected, YAML.load_file(@test_config_path))
         end
       end
     end
