@@ -8,4 +8,5 @@ group :development do
   gem 'pry'
   gem 'pry-byebug'
   gem 'pry-stack_explorer'
+  gem 'awesome_print'
 end

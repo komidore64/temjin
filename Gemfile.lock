@@ -19,6 +19,7 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     ast (2.3.0)
+    awesome_print (1.8.0)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
     byebug (9.1.0)
@@ -107,6 +108,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   minitest
   pry
   pry-byebug
