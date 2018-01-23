@@ -1,40 +1,33 @@
 module Temjin
   module Test
     module ConfigCommand
-      class TestInitCommand < MiniTest::Test
+      class InitCommandTest < MiniTest::Test
         include CaptureOutput
 
         def setup
-          @tempfile = Tempfile.new('config.yml')
-          @test_config_path = @tempfile.path
-          @init_command = Temjin::ConfigCommand::InitCommand.new('temjin config init')
-        end
-
-        def teardown
-          @init_command = nil
-          Temjin::ConfigCommand.instance_variable_set(:@config_file_path, nil)
-          @tempfile.close!
+          @username = 'solid_snake'
+          @key = '0123456789abcdef0123456789abcdef'
+          @token = '0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef'
         end
 
         def test_run
-          Temjin::ConfigCommand.instance_variable_set(:@config_file_path, @test_config_path)
-          command_args = []
+          config = MiniTest::Mock.new
+          config.expect(:username=, nil, [@username])
+          config.expect(:key=, nil, [@key])
+          config.expect(:token=, nil, [@token])
+          config.expect(:save!, nil, [])
 
-          expected = {
-            'username' => 'solid_snake',
-            'key' => '0123456789abcdef0123456789abcdef',
-            'token' => '0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef'
-          }
+          init_command = Temjin::ConfigCommand::InitCommand.new('temjin config init', :config => config)
 
           capture_output do |stdin|
-            stdin.puts(expected['username'])
-            stdin.puts(expected['key'])
-            stdin.puts(expected['token'])
+            stdin.puts(@username)
+            stdin.puts(@key)
+            stdin.puts(@token)
             stdin.rewind
-            @init_command.run(command_args)
+            init_command.run([])
           end
 
-          assert_equal(expected, YAML.load_file(@test_config_path))
+          assert(config.verify)
         end
       end
     end

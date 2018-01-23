@@ -5,6 +5,10 @@ require 'trello' # ruby-trello
 # beta feature
 Clamp.allow_options_after_parameters = true
 
+require 'temjin/configuration_not_found_error'
+require 'temjin/config'
+require 'temjin/command'
+
 require 'temjin/config_command'
 require 'temjin/config_command/show_command'
 require 'temjin/config_command/init_command'

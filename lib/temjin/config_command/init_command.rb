@@ -1,6 +1,10 @@
 module Temjin
   class ConfigCommand
-    class InitCommand < Clamp::Command
+    class InitCommand < Temjin::Command
+      def config # override
+        @config ||= Config.new(:create => true)
+      end
+
       def prompt(message, default = nil)
         print(message)
         result = $stdin.gets.chomp
@@ -8,19 +12,15 @@ module Temjin
       end
 
       def execute
-        config = {}
-
         # TODO: use Formatador for all output
         puts 'Go to https://trello.com/app-key to get your key and token.'
         puts
 
-        config['username'] = prompt('username: ')
-        config['key'] = prompt('key: ')
-        config['token'] = prompt('token: ')
+        config.username = prompt('username: ')
+        config.key= prompt('key: ')
+        config.token = prompt('token: ')
 
-        File.open(ConfigCommand.config_file_path, 'w') do |f|
-          f.write(config.to_yaml)
-        end
+        config.save!
       end
     end
   end

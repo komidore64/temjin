@@ -1,4 +1,9 @@
 #!/usr/bin/env ruby
 
 require 'temjin'
-Temjin::MainCommand.run
+begin
+  Temjin::MainCommand.run
+rescue => e
+  puts e.message
+  exit 1
+end

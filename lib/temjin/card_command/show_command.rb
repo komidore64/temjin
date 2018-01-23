@@ -1,18 +1,9 @@
 module Temjin
   class CardCommand
-    class ShowCommand < Clamp::Command
+    class ShowCommand < Temjin::TrelloAPICommand
       parameter 'CARD_ID', 'card ID'
 
       def execute
-        # FIXME: this should be moved to a Config class)
-        temjin_config = YAML.load_file(ConfigCommand.config_file_path)
-
-        # FIXME: this should take place as part of a command's setup
-        Trello.configure do |config|
-          config.developer_public_key = temjin_config['key']
-          config.member_token = temjin_config['token']
-        end
-
         card = Trello::Card.find(card_id)
         list = Trello::List.find(card.list_id)
         board = Trello::Board.find(card.board_id)
