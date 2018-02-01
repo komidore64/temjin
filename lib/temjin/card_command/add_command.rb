@@ -9,9 +9,9 @@ module Temjin
 
       def execute
         # TODO: should also be included in the command setup
-        user = Trello::Member.find(config.username)
+        user = find_user(config.username)
 
-        list_id = user.boards.detect { |b| b.name.match(board) }.lists.detect { |l| l.name.match(list) }.id
+        list_id = find_list(user, board, list).id
 
         create_options = {}
         create_options[:list_id] = list_id

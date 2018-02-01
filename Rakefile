@@ -7,6 +7,7 @@ Rake::TestTask.new do |t|
   t.libs << 'test'
   t.test_files = ['test/main.rb']
   t.verbose = true
+  t.warning = false
 end
 
 RuboCop::RakeTask.new

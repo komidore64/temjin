@@ -7,14 +7,14 @@ module Temjin
 
       def execute
         # TODO: should also be included in the command setup
-        user = Trello::Member.find(config.username)
+        user = find_user(config.username)
 
-        cards = user.boards.detect { |b| b.name.match(board) }.lists.detect { |l| l.name.match(list) }.cards
+        cards = find_list(user, board, list).cards
 
         cards = cards.map do |c|
-          { :id => c.id,
-            :name => c.name,
-            :desc => c.desc }
+          {:id => c.id,
+           :name => c.name,
+           :desc => c.desc}
         end
 
         cards.each do |card|

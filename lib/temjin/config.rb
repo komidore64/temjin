@@ -5,8 +5,8 @@ module Temjin
     attr_reader :file_path
 
     def initialize(options = {})
-      options = { :path => File.join(ENV['HOME'], '.config', 'temjin.yml'),
-                  :create => false }.merge(options.select { |k, _| [:path, :create].include?(k) })
+      options = {:path => File.join(ENV['HOME'], '.config', 'temjin.yml'),
+                 :create => false}.merge(options.select { |k, _| %i[path create].include?(k) })
 
       @file_path = options[:path]
 
@@ -24,13 +24,13 @@ module Temjin
       if create_bool
         FileUtils.touch(file_path)
       else
-        raise Temjin::ConfigurationNotFoundError unless File.exist?(file_path)
+        fail Temjin::ConfigurationNotFoundError unless File.exist?(file_path)
       end
     end
 
     def verify_format
       malformed = username.nil? || key.nil? || token.nil?
-      raise Temjin::ConfigurationNotFoundError if malformed
+      fail Temjin::ConfigurationNotFoundError if malformed
     end
 
     def save!

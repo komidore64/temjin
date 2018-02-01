@@ -3,7 +3,7 @@
 require 'temjin'
 begin
   Temjin::MainCommand.run
-rescue => e
+rescue StandardError => e
   puts e.message
   exit 1
 end

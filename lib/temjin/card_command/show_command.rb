@@ -4,10 +4,10 @@ module Temjin
       parameter 'CARD_ID', 'card ID'
 
       def execute
-        card = Trello::Card.find(card_id)
-        list = Trello::List.find(card.list_id)
-        board = Trello::Board.find(card.board_id)
-        members = card.member_ids.map { |member| Trello::Member.find(member).username }
+        card = find_card(card_id)
+        list = find_list_by_id(card.list_id)
+        board = find_board(card.board_id)
+        members = card.member_ids.map { |member| find_user(member).username }
         labels = card.labels.map { |label| label.name }
 
         Formatador.display_line("# [bold]#{card.name}[/]")

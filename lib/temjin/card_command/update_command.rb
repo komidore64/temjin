@@ -7,7 +7,7 @@ module Temjin
       option '--desc', 'DESC', 'card description'
 
       def execute
-        card = Trello::Card.find(card_id)
+        card = find_card(card_id)
 
         card.name = name if name
         card.desc = desc if desc

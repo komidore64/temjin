@@ -10,20 +10,20 @@ module Temjin
           @token = @config['token']
         end
 
-        def test_show_with_existing_config_file
-          config = MiniTest::Mock.new
-          config.expect(:key, @key, [])
-          config.expect(:token, @token, [])
+        def test_run
+          config = mock()
+          config.expects(:key).returns(@key)
+          config.expects(:token).returns(@token)
 
           @show_command = Temjin::ConfigCommand::ShowCommand.new('temjin config show', :config => config)
 
-          expected = "key: #{@key}\ntoken: #{@token}\n"
+          expected_stdout = "key: #{@key}\ntoken: #{@token}\n"
 
           actual_stdout, _ = capture_output do
             @show_command.run([])
           end
 
-          assert_equal(expected, actual_stdout)
+          assert_equal(expected_stdout, actual_stdout)
         end
       end
     end

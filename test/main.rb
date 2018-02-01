@@ -1,9 +1,12 @@
+require 'mocha/mini_test'
+
 require 'simplecov'
 SimpleCov.start do
   add_filter '/test/'
 end
 
 require 'minitest/autorun'
+require 'mocha/setup'
 
 require 'temjin'
 
@@ -18,11 +21,8 @@ module Temjin
   end
 end
 
-Dir['./test/helpers/*.rb'].each do |h|
-  require h
-end
+require './test/helpers/capture_output.rb'
 
-# TODO: WRITE TESTS
 Dir['./test/**/*_test.rb'].each do |f|
   require f
 end

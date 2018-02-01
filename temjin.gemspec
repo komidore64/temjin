@@ -20,14 +20,15 @@ Gem::Specification.new do |gem|
   gem.executables << 'temjin'
 
   gem.add_dependency 'clamp', '1.2.0.beta1'
-  gem.add_dependency 'ruby-trello'
   gem.add_dependency 'formatador'
+  gem.add_dependency 'ruby-trello'
 
   gem.add_development_dependency 'minitest'
-  gem.add_development_dependency 'webmock'
+  gem.add_development_dependency 'mocha'
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'rake-notes'
   gem.add_development_dependency 'rubocop', '~> 0.52.1'
   gem.add_development_dependency 'rubocop-checkstyle_formatter'
   gem.add_development_dependency 'simplecov'
+  gem.add_development_dependency 'webmock'
 end

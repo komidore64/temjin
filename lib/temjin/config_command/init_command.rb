@@ -17,7 +17,7 @@ module Temjin
         puts
 
         config.username = prompt('username: ')
-        config.key= prompt('key: ')
+        config.key = prompt('key: ')
         config.token = prompt('token: ')
 
         config.save!
