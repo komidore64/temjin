@@ -1,2 +1,5 @@
+Gemfile.lock
 .ruby-gemset
 coverage
+
+temjin-*.gem
