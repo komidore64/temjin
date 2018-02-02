@@ -1,3 +1,4 @@
+require 'yaml'
 require 'formatador'
 require 'clamp'
 require 'trello' # ruby-trello
