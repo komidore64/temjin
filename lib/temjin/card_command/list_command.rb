@@ -1,20 +1,22 @@
 module Temjin
   class CardCommand
     class ListCommand < Temjin::TrelloAPICommand
-      # TODO: eventually make BOARD and LIST optional, but for now we need them
-      parameter 'BOARD', 'trello board'
-      parameter 'LIST', 'trello list'
+      list_option
 
       def execute
         # TODO: should also be included in the command setup
         user = find_user(config.username)
 
-        cards = find_list(user, board, list).cards
+        cards = if list
+                  # FIXME: cards(:filter => 'visible') seems to be broken? the api is returning 400 'invalid value for filter'
+                  find_list(user, board, list).cards
+                else
+                  user.boards.detect { |b| b.name.match(board) }.cards(:filter => 'visible')
+                end
 
         cards = cards.map do |c|
           {:id => c.id,
-           :name => c.name,
-           :desc => c.desc}
+           :name => c.name}
         end
 
         cards.each do |card|
