@@ -11,6 +11,9 @@ module Temjin
   end
 
   class TrelloAPICommand < Temjin::Command
+    include CommandHelpers::Board
+    include CommandHelpers::List
+
     def initialize(invocation_path, context = {})
       super(invocation_path, context)
       trello_connection

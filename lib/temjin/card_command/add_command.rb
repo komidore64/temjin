@@ -1,8 +1,7 @@
 module Temjin
   class CardCommand
     class AddCommand < Temjin::TrelloAPICommand
-      parameter 'BOARD', 'board name'
-      parameter 'LIST', 'list name'
+      list_parameter
       parameter '[CARD_NAME]', 'name of card to add'
 
       option '--desc', 'DESC', 'card description'

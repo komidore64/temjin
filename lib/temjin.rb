@@ -8,6 +8,8 @@ Clamp.allow_options_after_parameters = true
 
 require 'temjin/configuration_not_found_error'
 require 'temjin/config'
+require 'temjin/command_helpers/board'
+require 'temjin/command_helpers/list'
 require 'temjin/command'
 
 require 'temjin/config_command'
@@ -33,3 +35,6 @@ module Temjin
   CardCommand.subcommand("update", "update a card", CardCommand::UpdateCommand)
   MainCommand.subcommand("card", "trello cards", CardCommand)
 end
+
+# added usage error messages
+Clamp.messages = {:option_required_by => "option '%<option>s' is required by '%<by>s'"}
