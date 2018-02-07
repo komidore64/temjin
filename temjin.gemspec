@@ -33,7 +33,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'simplecov', '~> 0.15.1'
   gem.add_development_dependency 'webmock', '~> 3.3.0'
   gem.add_development_dependency 'awesome_print', '~> 1.8.0'
-  gem.add_development_dependency 'pry', '~> 0'
-  gem.add_development_dependency 'pry-byebug', '~> 0'
-  gem.add_development_dependency 'pry-stack_explorer', '~> 0'
+  gem.add_development_dependency 'pry'
+  gem.add_development_dependency 'pry-byebug'
+  gem.add_development_dependency 'pry-stack_explorer'
 end
