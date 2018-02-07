@@ -1,6 +1,6 @@
 module Temjin
   class Config
-    attr_accessor :username, :key, :token
+    attr_accessor :username, :key, :token, :default_board
 
     attr_reader :file_path
 
@@ -16,6 +16,7 @@ module Temjin
       @username = config.dig('username')
       @key = config.dig('key')
       @token = config.dig('token')
+      @default_board = config.dig('default_board')
 
       verify_format unless options[:create]
     end
@@ -34,8 +35,15 @@ module Temjin
     end
 
     def save!
+      hash = {
+        'username' => username,
+        'key' => key,
+        'token' => token,
+        'default_board' => default_board
+      }
+
       File.open(file_path, 'w') do |f|
-        f.write({'username' => username, 'key' => key, 'token' => token}.to_yaml)
+        f.write(hash.to_yaml)
       end
     end
   end
