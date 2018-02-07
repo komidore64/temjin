@@ -5,6 +5,7 @@ module Temjin
         # TODO: use formatador for all output
         puts "key: #{config.key}"
         puts "token: #{config.token}"
+        puts "default_board: #{config.default_board}"
       end
     end
   end
