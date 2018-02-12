@@ -20,6 +20,7 @@ require 'temjin/card_command/list_command'
 require 'temjin/card_command/show_command'
 require 'temjin/card_command/add_command'
 require 'temjin/card_command/update_command'
+require 'temjin/card_command/mine_command'
 require 'temjin/list_command'
 require 'temjin/main_command'
 
@@ -33,7 +34,8 @@ module Temjin
   CardCommand.subcommand("show", "display a card's information", CardCommand::ShowCommand)
   CardCommand.subcommand("add", "add a new card", CardCommand::AddCommand)
   CardCommand.subcommand("update", "update a card", CardCommand::UpdateCommand)
-  MainCommand.subcommand("card", "trello cards", CardCommand)
+  CardCommand.subcommand("mine", "display my cards", CardCommand::MineCommand)
+  MainCommand.subcommand(["card", "cards"], "trello cards", CardCommand)
 end
 
 # added usage error messages
